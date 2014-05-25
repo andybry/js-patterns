@@ -1,0 +1,482 @@
+When to refactor:
+
+ - based on human intuition and experience
+   (when is a method too long)
+   (when does an object have too many instance variables)
+
+
+
+Thoughts about comments:
+
+- comments often indicate the need for refactoring
+
+comments explaining a chunk of code --> Extract Method
+what is does is not --> Rename Method
+comments about state --> Introduce Assertion
+
+- comments should be used for explaining why
+
+
+Guidelines:
+
+- Duplicated Code
+    Extract Method
+    Pull Up Method
+    Form Template Method
+    Substitute Algorithm
+    Extract Class
+
+- Long Method
+    Extract Method
+    Introduce Parameter Object
+    Preserve Whole Object
+    Replace Method with Object
+    Decompose Conditional
+
+- Large Class
+    Extract Class
+    Extract Subclass
+    Extract Interface
+    Duplicate Observed Data
+
+- Long Parameter List
+    Replace Parameter with Method
+    Preserve Whole Object
+    Introduce Parameter Object
+
+- Divergent Change
+    Extract Class
+
+- Shotgun Surgery
+    Move Method
+    Move Field
+    Inline Class
+
+- Feature Envy
+    Extract Method
+    Move Method
+
+- Data Clumps
+    Extract Class
+    Introduce Parameter Object
+    Preserve Whole Object
+
+- Primitive Obsession
+    Replace Data Value with Object
+    Replace Type Code with Class
+    Replace Type Code with Subclasses
+    Replace Type Code with State/Strategy
+    Replace Array with Object
+    Extract Class
+    Introduce Parameter Object
+
+- Switch Statements
+    Extract Method
+    Move Method
+    Replace Type Code with Subclasses
+    Replace Type Code State/Strategy
+    Replace Conditional with Polymorphism
+    Replace Parameter with Explicit Methods
+    Introduce Null Object
+
+- Parallel Inheritance Hierarchies
+    Move Method
+    Move Field
+
+- Lazy Class
+    Collapse Hierarchy
+    Inline Class
+
+- Speculative Generality
+    Collapse Hierarchy
+    Inline Class
+    Remove Parameter
+    Rename Method
+
+- Temporary Field
+    Extract Class
+    Introduce Null Object
+
+- Message Chains
+    Hide Delegate
+    Extract Method
+    Move Method
+
+- Middle Men
+    Remove Middle Man
+    Inline Method
+    Replace Delegation with Inheritance (middle man becomes subclass)
+
+- Inappropriate Intimacy
+    Move Method
+    Move Field
+    Change Bidirectional Association to Unidirectional
+    Extract Class
+    Hide Delegate
+    Replace Inheritance with Delegation
+
+- Alternative Classes with Different Interfaces
+    Rename Method
+    Move Method
+    Extract Superclass
+
+- Incomplete Library Class
+    Introduce Foreign Method
+    Introduce Local Extension
+
+- Data Classes
+    Encapsulate Field
+    Encapsulate Collection
+    Remove Setting Method
+    Move Method
+    Extract Method (to move partial methods)
+    Hide Method (on setters and getters)
+
+- Refused Bequest
+    Push Down Method (traditional)
+    Push Down Field (traditional)
+    Replace Inheritance with Delegation
+
+
+############################################
+# DUPLICATED CODE                          #
+############################################
+
+why: less code (less code to understand,
+     less code to deliver to browser,
+     updating code only has to happen in
+     on place, code can be reused more
+     easily)
+
+problem: same expression in more than one
+         place
+solution: Extract Method
+
+problem: same expression in two siblings
+solution: Extract Method, Pull Up Method
+
+problem: similar expression/algorithm
+solution: Extract Method then
+          Form Template Method
+
+problem: same end result in two different
+         ways
+solution: Substitute Algorithm
+
+problem: same code in two unrelated classes
+solution: Extract Class
+
+
+############################################
+# LONG METHOD                              #
+############################################
+
+why: long methods are difficult to
+     understand and test and contain code
+     which is difficult to reuse. They
+     also increase the scope of a variable
+     making it easier to introduce bugs.
+     They are also poorly encapsulated, and
+     convey less meaning to the reader.
+     Small methods allow names to be
+     given to each part of the program.
+
+- methods (names) can be used to document
+  what the code is doing.
+
+- heuristic: you feel that you want to put
+  a comment in the code that describes
+  what it does. Write a method instead.
+
+General Solution: Extract Method
+
+problem: Lots of temporary variables
+solution: Replace Temp with Query
+
+problem: Lots of parameters
+solutions:
+  - Introduce Parameter Object
+  - Preserve Whole Object
+
+
+problem: Way too many temporary variables
+         and parameters
+solution: Replace Method with Object
+
+problem: conditionals in method
+solution: Decompose Conditional
+
+problem: loops
+solution: move the loop to its own method
+
+
+############################################
+# LARGE CLASS                              #
+############################################
+
+Refactoring summary:
+
+when: too many instance variables (operating
+      on too much data). Leads to
+      duplicated code.
+
+Guideline: common prefixes and suffixes can
+           indicate a grouping for a
+           component.
+
+Guideline: a class doesn't use its instance
+           members all the time. Move
+           common ones into a class
+
+solution:
+  - Extract Class
+  - Extract Subclass
+  - Extract Interface
+
+problem: GUI classes may result in duplicate
+         data after refactoring
+solution: Duplicate Observed Data
+
+
+############################################
+# LONG PARAMETER LIST                      #
+############################################
+
+Why: long parameters cause coupling and
+     makes the method difficult to
+     understand.
+
+
+############################################
+# DIVERGENT CHANGE                         #
+############################################
+
+Why: one class changed in different ways for
+different reasons. This gives the class
+more than one different responsibility
+which makes it more difficult to maintain.
+It makes the class more and more complex.
+
+problem: class is being changed for 2
+         different reasons.
+solution: Extract Class
+
+
+############################################
+# SHOTGUN SURGERY                          #
+############################################
+
+Why: Every time you want to make a given
+     change, you have to do it in lots of
+     places.
+
+
+############################################
+# FEATURE ENVY                             #
+############################################
+
+Why: A class is using lots of features
+     from another class. This is especially
+     common with data. This makes the class
+     poorly encapsulated.
+
+heuristic: which class has most of the data
+           used by a method? the method
+           should be in that class. The
+           method may need to be broken
+           down before this becomes
+           obvious
+
+
+############################################
+# DATA CLUMPS                              #
+############################################
+
+Why: data that is used together should be
+     moved into an object in its own right
+     in order to better encapsulate that
+     data.
+
+(Even replacing 2 fields with 1 object
+makes a difference)
+
+For fields: use Extract Class
+For params: use Introduce Parameter Object
+              AND
+            Preserve Whole Object
+
+heuristic: if you remove one piece of data
+           do the others make sense on
+           their own.
+
+
+############################################
+# PRIMITIVE OBSESSION                      #
+############################################
+
+2 types of data: records, primitives
+
+Why: don't use primitives when you could
+     be encapsulating your data in a class.
+     This better documents what your code
+     is doing, and allows you to add
+     functionality.
+
+simple:
+
+  Replace Data Value with Object
+
+data is a type:
+
+  Replace Type Code with Class
+
+data is a type with conditionals relying on it:
+
+  Replace Type Code with Subclasses
+  Replace Type Code with State/Strategy
+
+Fields:
+
+  Extract Class
+
+Parameters:
+
+  Introduce Parameter Object
+
+
+Arrays being pulled apart:
+
+
+  Replace Array with Object
+
+
+############################################
+# SWITCH STATEMENTS                        #
+############################################
+
+why: switch statements represent an object
+     in its own right. They represent a
+     decision which cannot then be accessed
+     from elsewhere in the code.
+
+solution: use polymorphism
+
+############################################
+# PARALLEL INHERITANCE HIERARCHIES         #
+############################################
+
+why: adding to one hierarchy adds to the
+     other.
+
+solution: make one hierarchy refer to the
+          others (or intermediate?)
+
+
+############################################
+# LAZY CLASS                               #
+############################################
+
+why: a class that isn't doing enough to
+     justify its existence.
+
+
+############################################
+# SPECULATIVE GENERALITY                   #
+############################################
+
+why: code that isn't being used, but was
+     expected to be required.
+
+if possible remove methods that aren't used
+anywhere but in test cases.
+
+
+############################################
+# TEMPORARY FIELD                          #
+############################################
+
+why: a field that's only used under certain
+     circumstances.
+
+Extract the variable into another class.
+
+
+############################################
+# (long) MESSAGE CHAINS                    #
+############################################
+
+why: tight coupling which makes it difficult
+     to change code.
+
+
+############################################
+# MIDDLE MEN                               #
+############################################
+
+why: too much indirection can make the code
+     difficult to understand.
+
+
+############################################
+# INAPPROPRIATE INTIMACY                   #
+############################################
+
+why: breakdown in encapsulation and
+     responsibility.
+
+
+############################################
+# ALTERNATIVE CLASSES WITH DIFFERENT       #
+# INTERFACES                               #
+############################################
+
+??? They do the same thing, but in ???
+??? slightly different ways        ???
+
+
+############################################
+# INCOMPLETE LIBRARY CLASS                 #
+############################################
+
+why: library is not complete and we want to
+     isolate the changes from the library
+     itself.
+
+In JavaScript, could we override the
+actual method implementations themselves?
+
+
+############################################
+# DATA CLASSES                             #
+############################################
+
+Plain old data: fields, getters, setters and
+                nothing else.
+
+??? These classes are not encapsulated ???
+Is this less applicable to JavaScript?
+
+- heuristic: who's using this data, should
+             it be moved into one of the
+             classes?
+
+
+############################################
+# REFUSED BEQUEST                          #
+############################################
+
+why: a subclass is not really using methods
+     or members from it's parent. This
+     means that the hierarchy is not really
+     correct.
+
+Traditional:
+
+  create another subclass and push down,
+  retaining only what's common.
+
+This is worst when the child is trying to
+modify the interface of the parent, or
+refusing behaviour. Then use:
+
+Replace Inheritance with Delegation

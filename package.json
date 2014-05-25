@@ -1,0 +1,17 @@
+{
+  "name": "js-patterns",
+  "version": "0.0.0",
+  "description": "study JavaScript design patterns",
+  "main": "karma.conf.js",
+  "dependencies": {
+    "karma": "^0.12.16",
+    "karma-jasmine": "^0.1.5",
+    "karma-chrome-launcher": "^0.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "karma"
+  },
+  "author": "",
+  "license": "ISC"
+}

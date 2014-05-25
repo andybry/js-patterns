@@ -1,0 +1,1 @@
+// how to wrap array functionality in a new object
