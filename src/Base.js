@@ -1,9 +1,26 @@
 //= require bower_components/underscore/underscore
 
 /**
- * Base class for all other classes. Contains
- * a utility method (createClass) for generating
- * all other classes.
+ * Creates classes that have a createInstance
+ * factory method instead of a constructor.
+ *
+ * To create classes with this class use the
+ * createClass() method.
+ *
+ * Classes that require initialisation should
+ * override the _init method returning the
+ * object intended to be returned from createInstance.
+ * Normally this would be 'this'.
+ *
+ * If a child object is provided to createClass()
+ * then the class structure created is:
+ *
+ * Base <-- Parent <-- Child
+ *
+ * If no child object is provided to createClass()
+ * then the class structure created is:
+ *
+ * Base <-- Parent
  *
  * @class
  */
@@ -21,9 +38,6 @@ var Base = {
   },
 
   /**
-   * Classes should override this to initialise the object.
-   * The method should always return the 'this' object.
-   *
    * @private
    * @instance
    */
@@ -32,25 +46,16 @@ var Base = {
   },
 
   /**
-   * Create a class from a sequence of prototypes.
-   * This allows us to create classes inheriting
-   * from parents. Base is always added as the
-   * first prototype. The other prototypes are
-   * added in the order that they are supplied.
-   * Thus prototypes that are given later will
-   * override earlier ones.
-   *
    * @public
    * @static
-   * @param {...object} arguments - the prototypes
+   * @param {object} parent
+   * @param {object} [child]
    * @return Base
    */
-  createClass: function() {
-    var prototypes = [{}, Base];
-    for(var index in arguments) {
-      prototypes.push(arguments[index]);
-    }
-    return _.extend.apply(_, prototypes);
+  createClass: function(parent, child) {
+    var newClass = child ? Object.create(parent) : parent;
+    _.extend(newClass, child);
+    return _.defaults(newClass, this);
   }
 
 };
