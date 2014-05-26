@@ -32,14 +32,14 @@ var TemplateMethodContext = Base.createClass({
     /**
      * @type {AbstractTemplateMethod}
      */
-    UpperCaseMethod.create(this._message).perform();
+    UpperCaseMethod.createInstance(this._message).perform();
   },
 
   /**
    * Log the message in upper case
    */
   logInReverse: function() {
-    ReverseMethod.create(this._message).perform();
+    ReverseMethod.createInstance(this._message).perform();
   }
 
 });
@@ -105,6 +105,6 @@ var ReverseMethod = Base.createClass(AbstractTemplateMethod, {
 /**
  * @type {TemplateMethodContext}
  */
-var context = TemplateMethodContext.create('This is my message');
+var context = TemplateMethodContext.createInstance('This is my message');
 context.logInUpperCase();
 context.logInReverse();

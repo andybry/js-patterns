@@ -107,9 +107,9 @@ var LoggingWithDateStrategy = Base.createClass({
 });
 
 // run the code
-var loggingStrategy = LoggingStrategy.create();
-var logContext = StrategyContext.create(loggingStrategy);
+var loggingStrategy = LoggingStrategy.createInstance();
+var logContext = StrategyContext.createInstance(loggingStrategy);
 logContext.perform();
-var loggingWithDateStrategy = LoggingWithDateStrategy.create();
-var logWithDateContext = StrategyContext.create(loggingWithDateStrategy);
+var loggingWithDateStrategy = LoggingWithDateStrategy.createInstance();
+var logWithDateContext = StrategyContext.createInstance(loggingWithDateStrategy);
 logWithDateContext.perform();

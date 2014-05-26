@@ -17,7 +17,8 @@ module.exports = function(config) {
     files: [
       'bower_components/underscore/underscore.js',
       'src/Base.js',
-      'src/test.js'
+      'src/test.js',
+      'src/patterns/*'
     ],
 
 

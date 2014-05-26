@@ -37,7 +37,7 @@ var Child = Base.createClass(Parent, {
 /**
  * @type Child
  */
-var child = Child.create();
+var child = Child.createInstance();
 child.parentMethod();
 child.methodToBeOverridden();
 child.childMethod();

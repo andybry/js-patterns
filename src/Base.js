@@ -15,7 +15,7 @@ var Base = {
    * @param {...object} arguments
    * @returns Base
    */
-  create: function() {
+  createInstance: function() {
     var instance = Object.create(this);
     return this._init.apply(instance, arguments);
   },
