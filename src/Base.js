@@ -15,12 +15,13 @@
  * If a child object is provided to createClass()
  * then the class structure created is:
  *
- * Base <-- Parent <-- Child
+ * Base <-- Parent <-- Child and the child
+ * is returned.
  *
  * If no child object is provided to createClass()
  * then the class structure created is:
  *
- * Base <-- Parent
+ * Base <-- Parent and the parent is returned.
  *
  * NB: Base is not part of the prototype structure.
  *     Its methods are mixed in to every class
