@@ -22,6 +22,16 @@
  *
  * Base <-- Parent
  *
+ * NB: Base is not part of the prototype structure.
+ *     Its methods are mixed in to every class
+ *     created that doesn't already have them
+ *     as defaults.
+ *     Therefore updating Base at runtime
+ *     has no affect on previously created classes.
+ *     Updating the Parent class, on the other hand, will
+ *     affect child classes and their associated object
+ *     instances even if they have already been created.
+ *
  * @class
  */
 var Base = {
