@@ -60,7 +60,6 @@ var StateContext = Base.extend({
 
   /**
    * @public
-   * @instance
    */
   perform: function() {
     this.state.perform();
@@ -70,7 +69,6 @@ var StateContext = Base.extend({
    * Swap between the two possible states.
    *
    * @public
-   * @instance
    */
   swapState: function() {
     var name = this.state.name();

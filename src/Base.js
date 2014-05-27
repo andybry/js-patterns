@@ -31,7 +31,6 @@ var Base = {
 
   /**
    * @public
-   * @static
    * @param {...object} arguments
    * @returns Base
    */
@@ -42,7 +41,6 @@ var Base = {
 
   /**
    * @private
-   * @instance
    */
   _init: function() {
     return this;
@@ -50,10 +48,9 @@ var Base = {
 
   /**
    * @public
-   * @static
    * @param {object} prototype
    * @param {...object} [mixins]
-   * @return Base
+   * @return *
    */
   extend: function(prototype, mixins) {
     var mixins = _.toArray(arguments).slice(1);

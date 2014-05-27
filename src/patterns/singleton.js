@@ -21,7 +21,6 @@ var Singleton = Base.extend({
    * Rename create to getInstance
    *
    * @public
-   * @static
    * @return Singleton
    */
   getInstance: Base.create,

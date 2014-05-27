@@ -14,7 +14,6 @@ var TemplateMethodContext = Base.extend({
 
   /**
    * @private
-   * @instance
    * @param {string} message
    */
   _init: function(message) {
@@ -26,7 +25,6 @@ var TemplateMethodContext = Base.extend({
    * Log the message in lower case
    *
    * @public
-   * @instance
    */
   logInUpperCase: function() {
     /**
@@ -52,7 +50,6 @@ var AbstractTemplateMethod = Base.extend({
 
   /**
    * @private
-   * @instance
    * @param {string} message
    */
   _init: function(message) {
@@ -62,7 +59,6 @@ var AbstractTemplateMethod = Base.extend({
 
   /**
    * @public
-   * @instance
    */
   perform: function() {
     var output = this._calculateOutput();

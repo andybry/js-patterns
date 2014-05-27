@@ -6,7 +6,6 @@ var MyClass = Base.extend({
 
   /**
    * @private
-   * @instance
    * @param {string} message
    * @returns MyClass
    */
@@ -23,7 +22,6 @@ var MyClass = Base.extend({
    * An example public instance method
    *
    * @public
-   * @instance
    */
   exampleMethod: function() {
     console.log(this._exampleMember);
