@@ -47,7 +47,7 @@
  * @class
  * @augments Base
  */
-var StateContext = Base.createClass({
+var StateContext = Base.extend({
 
   /**
    * @returns {StateContext}
@@ -93,7 +93,7 @@ var StateContext = Base.createClass({
  * @class
  * @augments Base
  */
-var AbstractState = Base.createClass({
+var AbstractState = Base.extend({
 
   perform: function() {
     throw 'perform is an abstract method';
@@ -105,7 +105,7 @@ var AbstractState = Base.createClass({
  * @class
  * @augments AbstractState
  */
-var State1 = Base.createClass(AbstractState, {
+var State1 = Base.extend(AbstractState, {
 
   perform: function() {
     console.log("in state 1");
@@ -121,7 +121,7 @@ var State1 = Base.createClass(AbstractState, {
  * @class
  * @augments AbstractState
  */
-var State2 = Base.createClass(AbstractState, {
+var State2 = Base.extend(AbstractState, {
 
   perform: function() {
     console.log("in state 2");

@@ -10,7 +10,7 @@
  * @class
  * @augments Base
  */
-var TemplateMethodContext = Base.createClass({
+var TemplateMethodContext = Base.extend({
 
   /**
    * @private
@@ -48,7 +48,7 @@ var TemplateMethodContext = Base.createClass({
  * @class
  * @augments Base
  */
-var AbstractTemplateMethod = Base.createClass({
+var AbstractTemplateMethod = Base.extend({
 
   /**
    * @private
@@ -79,7 +79,7 @@ var AbstractTemplateMethod = Base.createClass({
  * @class
  * @augments AbstractTemplateMethod
  */
-var UpperCaseMethod = Base.createClass(AbstractTemplateMethod, {
+var UpperCaseMethod = Base.extend(AbstractTemplateMethod, {
 
   _calculateOutput: function() {
     return this._message.toUpperCase();
@@ -91,7 +91,7 @@ var UpperCaseMethod = Base.createClass(AbstractTemplateMethod, {
  * @class
  * @augments AbstractTemplateMethod
  */
-var ReverseMethod = Base.createClass(AbstractTemplateMethod, {
+var ReverseMethod = Base.extend(AbstractTemplateMethod, {
 
   _calculateOutput: function() {
     var chars = this._message.split('');

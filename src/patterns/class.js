@@ -2,7 +2,7 @@
  * @class
  * @augments Base
  */
-var MyClass = Base.createClass({
+var MyClass = Base.extend({
 
   /**
    * @private

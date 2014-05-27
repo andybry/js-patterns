@@ -46,7 +46,7 @@
  * @class
  * @augments Base
  */
-var StrategyContext = Base.createClass({
+var StrategyContext = Base.extend({
 
   /**
    * @param {AbstractLoggingStrategy} strategy
@@ -69,7 +69,7 @@ var StrategyContext = Base.createClass({
  * @class
  * @augments Base
  */
-var AbstractLoggingStrategy = Base.createClass({
+var AbstractLoggingStrategy = Base.extend({
   /**
    * Log the message
    *
@@ -86,7 +86,7 @@ var AbstractLoggingStrategy = Base.createClass({
  * @class
  * @augments {AbstractLoggingStrategy}                                                                                     r
  */
-var LoggingStrategy = Base.createClass(AbstractLoggingStrategy, {
+var LoggingStrategy = Base.extend(AbstractLoggingStrategy, {
 
   log: function (message) {
     console.log(message);
@@ -98,7 +98,7 @@ var LoggingStrategy = Base.createClass(AbstractLoggingStrategy, {
  * @class
  * @augments {AbstractLoggingStrategy}
  */
-var LoggingWithDateStrategy = Base.createClass(AbstractLoggingStrategy, {
+var LoggingWithDateStrategy = Base.extend(AbstractLoggingStrategy, {
 
   log: function(message) {
     console.log(new Date(), message);

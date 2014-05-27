@@ -6,7 +6,7 @@
  * @class
  * @augments Base
  */
-var Parent = Base.createClass({
+var Parent = Base.extend({
 
   methodToBeOverridden: function() {
     console.log('This should never run');
@@ -22,7 +22,7 @@ var Parent = Base.createClass({
  * @class
  * @augments Parent
  */
-var Child = Base.createClass(Parent, {
+var Child = Base.extend(Parent, {
 
   methodToBeOverridden: function() {
     console.log('The overridden method in the child');

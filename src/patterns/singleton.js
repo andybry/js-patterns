@@ -15,7 +15,7 @@
  * @class
  * @augments Base
  */
-var Singleton = Base.createClass({
+var Singleton = Base.extend({
 
   /**
    * Rename create to getInstance

@@ -5,7 +5,7 @@
  * factory method instead of a constructor.
  *
  * To create classes with this class use the
- * createClass() method.
+ * extend() method.
  *
  * The first argument is the parent prototype of the class
  * being created (i.e. the object returned by this
@@ -55,7 +55,7 @@ var Base = {
    * @param {...object} [mixins]
    * @return Base
    */
-  createClass: function(prototype, mixins) {
+  extend: function(prototype, mixins) {
     var mixins = _.toArray(arguments).slice(1);
     var newClass = mixins.length > 0 ? Object.create(prototype) : prototype;
     mixins.unshift(newClass);
