@@ -86,7 +86,7 @@ var AbstractLoggingStrategy = Base.createClass({
  * @class
  * @augments {AbstractLoggingStrategy}                                                                                     r
  */
-var LoggingStrategy = Base.createClass({
+var LoggingStrategy = Base.createClass(AbstractLoggingStrategy, {
 
   log: function (message) {
     console.log(message);
@@ -98,7 +98,7 @@ var LoggingStrategy = Base.createClass({
  * @class
  * @augments {AbstractLoggingStrategy}
  */
-var LoggingWithDateStrategy = Base.createClass({
+var LoggingWithDateStrategy = Base.createClass(AbstractLoggingStrategy, {
 
   log: function(message) {
     console.log(new Date(), message);
