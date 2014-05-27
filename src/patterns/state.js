@@ -54,7 +54,7 @@ var StateContext = Base.createClass({
    * @private
    */
   _init: function() {
-    this.state = State1.createInstance();
+    this.state = State1.create();
     return this;
   },
 
@@ -76,10 +76,10 @@ var StateContext = Base.createClass({
     var name = this.state.name();
     switch(name) {
       case "state 1":
-        this.state = State2.createInstance();
+        this.state = State2.create();
         break;
       case "state 2":
-        this.state = State1.createInstance();
+        this.state = State1.create();
     }
   }
 
@@ -134,7 +134,7 @@ var State2 = Base.createClass(AbstractState, {
 });
 
 // run the code
-var stateContext = StateContext.createInstance();
+var stateContext = StateContext.create();
 stateContext.perform();
 stateContext.swapState();
 stateContext.perform();

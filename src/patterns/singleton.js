@@ -18,13 +18,13 @@
 var Singleton = Base.createClass({
 
   /**
-   * Rename createInstance to getInstance
+   * Rename create to getInstance
    *
    * @public
    * @static
    * @return Singleton
    */
-  getInstance: Base.createInstance,
+  getInstance: Base.create,
 
   /**
    * @private

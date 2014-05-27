@@ -1,7 +1,7 @@
 //= require bower_components/underscore/underscore
 
 /**
- * Creates classes that have a createInstance
+ * Creates classes that have a create
  * factory method instead of a constructor.
  *
  * To create classes with this class use the
@@ -35,7 +35,7 @@ var Base = {
    * @param {...object} arguments
    * @returns Base
    */
-  createInstance: function() {
+  create: function() {
     var instance = Object.create(this);
     return this._init.apply(instance, arguments);
   },

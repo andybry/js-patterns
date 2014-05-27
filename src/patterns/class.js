@@ -35,5 +35,5 @@ var MyClass = Base.createClass({
 /**
  * @type MyClass
  */
-var myObject = MyClass.createInstance('Output this message too');
+var myObject = MyClass.create('Output this message too');
 myObject.exampleMethod();
