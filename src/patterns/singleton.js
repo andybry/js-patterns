@@ -31,13 +31,10 @@ var Singleton = Base.createClass({
    * @return Singleton
    */
   _init: function() {
-    if(typeof Singleton.instance === 'undefined') {
-      Singleton.instance = this;
-    } else {
-      return Singleton.instance;
-    }
+    var singleton = this;
+    Singleton._init = function() { return singleton };
     // initialisation code goes here
-    return Singleton.instance;
+    return this;
   }
 
 });
