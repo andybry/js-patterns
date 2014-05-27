@@ -1,0 +1,6 @@
+When finding references always use computer based searching to help.
+
+- text based search
+- investigate search results rather than blind search and replace.
+- grasp (http://graspjs.com/)?
+
