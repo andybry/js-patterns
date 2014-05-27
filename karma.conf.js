@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
       'bower_components/underscore/underscore.js',
       'src/Base.js',
-      'src/patterns/singleton.js'
+      'src/patterns/*.js'
     ],
 
 

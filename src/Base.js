@@ -7,31 +7,23 @@
  * To create classes with this class use the
  * createClass() method.
  *
- * Classes that require initialisation should
- * override the _init method returning the
- * object intended to be returned from createInstance.
- * Normally this would be 'this'.
+ * The first argument is the parent prototype of the class
+ * being created (i.e. the object returned by this
+ * method will have this as its prototype).
+ * Any other arguments supplied will have their enumerable
+ * members mixed into the class created in the order
+ * they are supplied in. Thus later mixin methods
+ * will override those that come first.
  *
- * If a child object is provided to createClass()
- * then the class structure created is:
+ * If no mixins are supplied then the prototype itself
+ * forms the new class to avoid having an unnecessary
+ * step in the prototype chain.
  *
- * Base <-- Parent <-- Child and the child
- * is returned.
+ * NB: Mixins are only mixed into the class
+ *     when objects are created. Subsequent
+ *     changes to the mixins are not reflected in
+ *     the created class.
  *
- * If no child object is provided to createClass()
- * then the class structure created is:
- *
- * Base <-- Parent and the parent is returned.
- *
- * NB: Base is not part of the prototype structure.
- *     Its methods are mixed in to every class
- *     created that doesn't already have them
- *     as defaults.
- *     Therefore updating Base at runtime
- *     has no affect on previously created classes.
- *     Updating the Parent class, on the other hand, will
- *     affect child classes and their associated object
- *     instances even if they have already been created.
  *
  * @class
  */
@@ -59,13 +51,15 @@ var Base = {
   /**
    * @public
    * @static
-   * @param {object} parent
-   * @param {object} [child]
+   * @param {object} prototype
+   * @param {...object} [mixins]
    * @return Base
    */
-  createClass: function(parent, child) {
-    var newClass = child ? Object.create(parent) : parent;
-    _.extend(newClass, child);
+  createClass: function(prototype, mixins) {
+    var mixins = _.toArray(arguments).slice(1);
+    var newClass = mixins.length > 0 ? Object.create(prototype) : prototype;
+    mixins.unshift(newClass);
+    _.extend.apply(_, mixins);
     return _.defaults(newClass, this);
   }
 
