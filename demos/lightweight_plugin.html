@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <p>
+    Presenting a wide-ranging and extremely detailed case for significant upgrades
+    to their <span>speed and memory</span>, the world’s fastest
+    <span>supercomputers</span> released a new study
+    at precisely <span>12:00 a.m. Greenwich Mean Time Thursday</span> that
+    concludes they are not powerful enough.
+  </p>
+
+  <script type="text/javascript" src="../bower_components/underscore/underscore.js"></script>
+  <script type="text/javascript" src="../src/Base.js"></script>
+  <script type="text/javascript" src="../src/patterns/lightweight_plugin.js"></script>
+
+  <script type="text/javascript">
+    var elements = document.querySelectorAll('span');
+    Googlify.create(elements[0]);
+    Googlify.create(elements[1], {host: 'www.google.com'});
+    Googlify.create(elements[2], {host: 'www.google.com.tr', target: '_self'});
+  </script>
+
+</body>
+</html>
